@@ -1,0 +1,109 @@
+inventario = []
+resposta = "S"
+
+#Adicionar item ao inventário.
+while resposta == "S":
+    equipamento=[input("Equipamento: "),
+            float(input("Valor: ")),
+            int(input("Número Serial: ")),
+            input("Departamento: ")]
+    inventario.append((equipamento))
+    resposta = input("Digite \"S\" para continuar: ").upper()
+
+#Exibir dados do inventário.
+for elemento in inventario:
+    print("Nome........: ",elemento[0])
+    print("Valor.......: ",elemento[1])
+    print("Serial......: ",elemento[2])
+    print("Departamento: ",elemento[3])
+    break
+
+#Localizar um item no inventário.
+busca = input("Digite o nome do equipamento que deseja buscar: ")
+for elemento in inventario:
+    if busca == elemento[0]:
+        print("Valor......: ",elemento[1])
+        print("Serial.....: ",elemento[2])
+
+#Depreciar itens no inventário.
+depreciacao = input("Digite o nome do equipamento que será depreciado: ")
+for elemento in inventario:
+    if depreciacao == elemento[0]:
+        print("Valor antigo: ",elemento[1])
+        elemento[1] = elemento[1] * 0.9
+        print("Novo valor : ",elemento[1])
+
+#Excluir um item do inventário.
+serial = int(input("Digite o serial do equipamento que será excluído: "))
+for elemento in inventario:
+    if elemento[2] == serial:
+        inventario.remove(elemento)
+        break
+
+#Exibir dados do inventário.
+for elemento in inventario:
+    print("Nome......: ",elemento[0])
+    print("Valor.....: ",elemento[1])
+    print("Serial....: ",elemento[2])
+    print("Departamento: ",elemento[3])
+
+#Resumo de valores do inventário.
+valores = []
+for elemento in inventario:
+    valores.append(elemento[1])
+if len(valores)>0:
+    print("O equipamento mais caro custa: ",max(valores))
+    print("O equipamento mais barato custa: ",min(valores))
+    print("O total de equipamento é de: ",sum(valores))
+
+EXPLICAÇÃO DO CÓDIGO:
+O código fornecido é um script em Python que permite ao usuário gerenciar um inventário de equipamentos. Vamos analisar cada parte do código:
+
+Criação do Inventário:
+
+inventario é uma lista vazia inicializada para armazenar os dados dos equipamentos.
+resposta é uma variável inicializada com "S" para controlar o loop de entrada de dados.
+Adição de Itens ao Inventário:
+
+Um loop while permite ao usuário adicionar equipamentos ao inventário enquanto a resposta for "S".
+Cada equipamento é representado como uma lista (equipamento) contendo nome, valor, número serial e departamento.
+O equipamento é adicionado à lista inventario, que contém todos os equipamentos cadastrados.
+O programa solicita ao usuário que digite "S" para continuar.
+Exibição de Dados do Inventário (Apenas Primeiro Equipamento):
+
+Um loop for é utilizado para exibir os dados do primeiro equipamento cadastrado no inventário. No entanto, há um break no final do loop, o que faz com que ele saia imediatamente após a primeira iteração.
+Localização de um Item no Inventário:
+
+O programa permite ao usuário buscar um equipamento pelo nome. A busca é feita comparando o nome fornecido com os nomes na lista de inventário. Se houver uma correspondência, os detalhes desse equipamento são exibidos.
+Depreciação de Itens no Inventário:
+
+O usuário pode depreciar um equipamento pelo nome. O programa percorre a lista de inventário procurando por uma correspondência. Se encontrar, imprime o valor antigo do equipamento e depois atualiza o valor na lista, multiplicando-o por 0.9 (reduzindo 10%).
+Exclusão de um Item do Inventário:
+
+O usuário pode excluir um equipamento fornecendo o número de serial. O código percorre a lista de inventário procurando uma correspondência e, se encontrada, remove esse equipamento da lista.
+Exibição Final dos Dados do Inventário:
+
+Outro loop for é usado para exibir os dados restantes dos equipamentos no inventário após as operações de busca, depreciação e exclusão.
+Resumo de Valores do Inventário:
+
+Uma lista valores é criada para armazenar os valores dos equipamentos no inventário.
+Se houver equipamentos no inventário, o programa imprime o equipamento mais caro, o equipamento mais barato e o total de equipamentos com base nos valores.
+Sugestões de Melhorias:
+
+Tratamento de Erros:
+
+Adicionar tratamento de erros para lidar com possíveis exceções, como entradas inválidas do usuário (por exemplo, ao inserir letras em campos numéricos).
+Funções:
+
+Refatorar o código usando funções pode torná-lo mais modular e fácil de entender.
+Remover o Break no Loop de Exibição Inicial:
+
+Remover o break no loop de exibição inicial para permitir que todos os equipamentos cadastrados sejam mostrados, não apenas o primeiro.
+Utilizar Dicionários ou Classes:
+
+Considere representar cada equipamento como um dicionário ou uma classe para facilitar a manipulação e o acesso aos dados.
+
+
+
+
+
